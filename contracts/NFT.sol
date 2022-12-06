@@ -2,8 +2,9 @@
 pragma solidity ^0.8.0;
 
 import './ERC721Enumerable.sol';
+import './Ownable.sol';
 
-contract NFT is ERC721Enumerable {
+contract NFT is ERC721Enumerable, Ownable {
     uint256 public cost;
     uint256 public maxSupply;
     uint256 public allowMintingOn;
