@@ -94,6 +94,12 @@ describe('NFT', () => {
       it('updates the contract ether balance', async () => {
         expect(await ethers.provider.getBalance(nft.address)).to.equal(COST)
       })
+
+      it('emits Mint event', async () => {
+        await expect(transaction)
+          .to.emit(nft, 'Mint')
+          .withArgs(1, minter.address)
+      })
     })
 
     describe('Failure', async () => {
