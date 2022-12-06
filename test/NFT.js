@@ -12,6 +12,7 @@ describe('NFT', () => {
   const SYMBOL = 'DP'
   const COST = ether(10)
   const MAX_SUPPLY = 25
+  const BASE_URI = 'ipfs://QmQ2jnDYecFhrf3asEWjyjZRX1pZSsNWG3qHzmNDvXa9qg/'
 
   let nft
 
@@ -20,7 +21,14 @@ describe('NFT', () => {
 
     beforeEach(async () => {
       const NFT = await ethers.getContractFactory('NFT')
-      nft = await NFT.deploy(NAME, SYMBOL, COST, MAX_SUPPLY, ALLOW_MINTING_ON)
+      nft = await NFT.deploy(
+        NAME,
+        SYMBOL,
+        COST,
+        MAX_SUPPLY,
+        ALLOW_MINTING_ON,
+        BASE_URI
+      )
     })
 
     it('has correct name', async () => {
@@ -41,6 +49,10 @@ describe('NFT', () => {
 
     it('returns the allowed minting time', async () => {
       expect(await nft.allowMintingOn()).to.equal(ALLOW_MINTING_ON)
+    })
+
+    it('returns the base URI', async () => {
+      expect(await nft.baseURI()).to.equal(BASE_URI)
     })
   })
 })
