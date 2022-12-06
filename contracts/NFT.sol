@@ -28,6 +28,9 @@ contract NFT is ERC721Enumerable, Ownable {
         // Create a token
         uint256 supply = totalSupply();
 
+        // Require enough payment
+        require(msg.value >= cost * _mintAmount);
+
         for (uint256 i = 1; i <= _mintAmount; i++) {
             _safeMint(msg.sender, supply + i);
         }
