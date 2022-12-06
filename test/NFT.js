@@ -83,12 +83,16 @@ describe('NFT', () => {
           BASE_URI
         )
 
-        transaction = await nft.connect(minter).mint()
+        transaction = await nft.connect(minter).mint(1, { value: COST })
         result = await transaction.wait()
       })
 
       it('updates the total supply', async () => {
         expect(await nft.totalSupply()).to.equal(1)
+      })
+
+      it('updates the contract ether balance', async () => {
+        expect(await ethers.provider.getBalance(nft.address)).to.equal(COST)
       })
     })
 
