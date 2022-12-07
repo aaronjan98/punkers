@@ -96,7 +96,6 @@ describe('NFT', () => {
       })
 
       it('returns IPFS URI', async () => {
-        // EG: 'ipfs://QmQ2jnDYecFhrf3asEWjyjZRX1pZSsNWG3qHzmNDvXa9qg/1.json'
         expect(await nft.tokenURI(1)).to.equal(`${BASE_URI}1.json`)
       })
 
@@ -181,6 +180,22 @@ describe('NFT', () => {
 
         await expect(nft.connect(minter).mint(100, { value: COST })).to.be
           .reverted
+      })
+
+      it('does not return URIs for invalid tokens', async () => {
+        const ALLOW_MINTING_ON = Date.now().toString().slice(0, 10) // Now
+        const NFT = await ethers.getContractFactory('NFT')
+        nft = await NFT.deploy(
+          NAME,
+          SYMBOL,
+          COST,
+          MAX_SUPPLY,
+          ALLOW_MINTING_ON,
+          BASE_URI
+        )
+        nft.connect(minter).mint(1, { value: COST })
+
+        await expect(nft.tokenURI('99')).to.be.reverted
       })
     })
   })
