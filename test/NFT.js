@@ -266,6 +266,12 @@ describe('NFT', () => {
           await ethers.provider.getBalance(deployer.address)
         ).to.be.greaterThan(balanceBefore)
       })
+
+      it('emits a withdraw event', async () => {
+        expect(transaction)
+          .to.emit(nft, 'Withdraw')
+          .withArgs(COST, deployer.address)
+      })
     })
   })
 })
