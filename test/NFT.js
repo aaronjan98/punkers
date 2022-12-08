@@ -2,7 +2,7 @@ const { expect } = require('chai')
 const { ethers } = require('hardhat')
 
 const tokens = n => {
-  return ethers.utils.parseUnits(n.toString(), 'ether')
+  return ethers.utils.parseEther(n.toString())
 }
 
 const ether = tokens
@@ -271,6 +271,11 @@ describe('NFT', () => {
         expect(transaction)
           .to.emit(nft, 'Withdraw')
           .withArgs(COST, deployer.address)
+      })
+
+      it('allows owner to update the NFT price', async () => {
+        nft.connect(deployer).setCost(ether(11))
+        expect(await nft.cost()).to.equal(ether(11))
       })
     })
 
