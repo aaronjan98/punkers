@@ -260,6 +260,12 @@ describe('NFT', () => {
       it('deducts contract balance', async () => {
         expect(await ethers.provider.getBalance(nft.address)).to.equal(0)
       })
+
+      it('sends funds to the owner', async () => {
+        expect(
+          await ethers.provider.getBalance(deployer.address)
+        ).to.be.greaterThan(balanceBefore)
+      })
     })
   })
 })
