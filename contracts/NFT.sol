@@ -76,4 +76,11 @@ contract NFT is ERC721Enumerable, Ownable {
         }
         return tokenIds;
     }
+
+    function withdraw() public onlyOwner {
+        uint256 balance = address(this).balance;
+
+        (bool success, ) = payable(msg.sender).call{ value: balance }('');
+        require(success);
+    }
 }
