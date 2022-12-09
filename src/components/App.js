@@ -8,6 +8,7 @@ import preview from '../preview.png'
 
 // Components
 import Navigation from './Navigation'
+import Data from './Data'
 import Loading from './Loading'
 
 // ABIs: Import your contract ABIs here
@@ -95,6 +96,13 @@ function App() {
               <div className="my-4 text-center">
                 <Countdown date={parseInt(revealTime)} className="h2" />
               </div>
+
+              <Data
+                maxSupply={maxSupply}
+                totalSupply={totalSupply}
+                cost={cost}
+                balance={balance}
+              />
             </Col>
           </Row>
         </>
