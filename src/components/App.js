@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
+import Countdown from 'react-countdown'
 import { ethers } from 'ethers'
+
+// IMG
+import preview from '../preview.png'
 
 // Components
 import Navigation from './Navigation'
@@ -83,7 +87,16 @@ function App() {
         <Loading />
       ) : (
         <>
-          <p className="text-center">Edit App.js to add your code here.</p>
+          <Row>
+            <Col>
+              <img src={preview} alt="nft preview" />
+            </Col>
+            <Col>
+              <div className="my-4 text-center">
+                <Countdown date={parseInt(revealTime)} className="h2" />
+              </div>
+            </Col>
+          </Row>
         </>
       )}
     </Container>
