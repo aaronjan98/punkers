@@ -37,14 +37,8 @@ function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     setProvider(provider)
 
-    const { chainId } = await provider.getNetwork()
-
     // Initiate contract
-    const nft = new ethers.Contract(
-      config[chainId].nft.address,
-      NFT_ABI,
-      provider
-    )
+    const nft = new ethers.Contract(config[1337].nft.address, NFT_ABI, provider)
     setNFT(nft)
 
     // Fetch accounts
@@ -91,8 +85,20 @@ function App() {
         <>
           <Row>
             <Col>
-              <img src={preview} alt="nft preview" />
+              {balance > 0 ? (
+                <div className="text-center">
+                  <img
+                    src={`https://gateway.pinata.cloud/ipfs/QmQPEMsfd1tJnqYPbnTQCjoa8vczfsV1FmqZWgRdNQ7z3g/${balance.toString()}.png`}
+                    alt="Open Punk"
+                    width="400px"
+                    height="400px"
+                  />
+                </div>
+              ) : (
+                <img src={preview} alt="" />
+              )}
             </Col>
+
             <Col>
               <div className="my-4 text-center">
                 <Countdown date={parseInt(revealTime)} className="h2" />
