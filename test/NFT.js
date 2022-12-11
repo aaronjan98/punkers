@@ -167,7 +167,7 @@ describe('NFT', () => {
           .reverted
       })
 
-      it("doesn't allow more NFTs to minted than max supply", async () => {
+      it("doesn't allow more NFTs to be minted than max supply", async () => {
         const ALLOW_MINTING_ON = Date.now().toString().slice(0, 10) // Now
         const NFT = await ethers.getContractFactory('NFT')
         nft = await NFT.deploy(
@@ -180,6 +180,22 @@ describe('NFT', () => {
         )
 
         await expect(nft.connect(minter).mint(100, { value: COST })).to.be
+          .reverted
+      })
+
+      it('puts a cap on the number of NFTs a user can mint', async () => {
+        const ALLOW_MINTING_ON = Date.now().toString().slice(0, 10) // Now
+        const NFT = await ethers.getContractFactory('NFT')
+        nft = await NFT.deploy(
+          NAME,
+          SYMBOL,
+          COST,
+          MAX_SUPPLY,
+          ALLOW_MINTING_ON,
+          BASE_URI
+        )
+
+        await expect(nft.connect(minter).mint(4, { value: ether(40) })).to.be
           .reverted
       })
 

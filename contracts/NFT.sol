@@ -45,6 +45,8 @@ contract NFT is ERC721Enumerable, Ownable {
             "can't mint more tokens than available"
         );
 
+        require(_mintAmount <= 3, 'Only three NFTs per user');
+
         // Create a tokens
         for (uint256 i = 1; i <= _mintAmount; i++) {
             _safeMint(msg.sender, supply + i);
