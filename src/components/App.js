@@ -37,9 +37,19 @@ function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     setProvider(provider)
 
+    const { chainId } = await provider.getNetwork()
+
     // Initiate contract
-    const nft = new ethers.Contract(config[1337].nft.address, NFT_ABI, provider)
+    const nft = new ethers.Contract(
+      config[chainId].nft.address,
+      NFT_ABI,
+      provider
+    )
     setNFT(nft)
+
+    // console.log(nft.address === config[chainId].nft.address)
+    // console.log(await provider.getCode(nft.address))
+    // console.log(await nft.allowMintingOn())
 
     // Fetch accounts
     const accounts = await window.ethereum.request({
@@ -50,6 +60,7 @@ function App() {
 
     // Fetch Countdown
     const allowMintingOn = await nft.allowMintingOn()
+    // console.log({ allowMintingOn.toString() })
     setRevealTime(allowMintingOn.toString() + '000')
 
     // Fetch maxSupply

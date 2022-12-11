@@ -7,6 +7,9 @@ const privateKeys = process.env.PRIVATE_KEYS || ''
 module.exports = {
   solidity: '0.8.17',
   networks: {
+    localhost: {
+      url: 'http://127.0.0.1:8545',
+    },
     ganache: {
       url: 'http://127.0.0.1:9000',
     },

@@ -1,4 +1,3 @@
-const hre = require('hardhat')
 const config = require('../src/config.json')
 const NFT_ABI = require('../src/abis/NFT.json')
 
@@ -14,8 +13,17 @@ async function main() {
   for (let i = 0; i < accounts.length; i++) {
     account = accounts[i].address
     deployerBalance = await ethers.provider.getBalance(account)
+    // console.log(
+    //   `${i}: 0x...${account
+    //     .toString()
+    //     .slice(37, 42)} ${await ethers.utils.formatEther(
+    //     deployerBalance.toString()
+    //   )}`
+    // )
     console.log(
-      `${account} ${await ethers.utils.formatEther(deployerBalance.toString())}`
+      `${i}: ${account} ${await ethers.utils.formatEther(
+        deployerBalance.toString()
+      )}`
     )
   }
 

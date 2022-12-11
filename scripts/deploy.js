@@ -11,7 +11,8 @@ async function main() {
   const SYMBOL = 'DP'
   const COST = ethers.utils.parseEther('10')
   const MAX_SUPPLY = 25
-  const NFT_MINT_DATE = (Date.now() + 60000).toString().slice(0, 10)
+  // const NFT_MINT_DATE = (Date.now() + 120000).toString().slice(0, 10)
+  const NFT_MINT_DATE = '1672560000' // New Year's Day
   const IPFS_METADATA_URI =
     'ipfs://QmQ2jnDYecFhrf3asEWjyjZRX1pZSsNWG3qHzmNDvXa9qg/'
 
@@ -27,7 +28,7 @@ async function main() {
   )
 
   await nft.deployed()
-  console.log(`NFT deployed to: ${nft.address}\n`)
+  console.log(`\nNFT deployed to: ${nft.address}\n`)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

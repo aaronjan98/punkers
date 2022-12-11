@@ -18,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "ganache": "ganache -p 9000 -a 20 -e 10000 -m 'egg cannon figure ketchup fall issue never share online shiver chief album' -t 2023-01-01T12:00:00Z"
   },
   "author": "aaronjanovitch@gmail.com",
   "license": "ISC",
