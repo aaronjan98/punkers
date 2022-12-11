@@ -100,6 +100,16 @@ describe('NFT', () => {
         expect(await nft.tokenURI(1)).to.equal(`${BASE_URI}1.json`)
       })
 
+      it('returns the status of pauseMinting', async () => {
+        expect(await nft.pauseMinting()).to.equal(false)
+      })
+
+      it('toggle update minting status', async () => {
+        let transaction = await nft.connect(deployer).toggleMinting()
+        await transaction.wait()
+        expect(await nft.pauseMinting()).to.equal(true)
+      })
+
       it('updates the total supply', async () => {
         expect(await nft.totalSupply()).to.equal(1)
       })
