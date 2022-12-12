@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 import './ERC721Enumerable.sol';
 import './Ownable.sol';
+import 'hardhat/console.sol';
 
 contract NFT is ERC721Enumerable, Ownable {
     using Strings for uint256;
@@ -13,6 +14,7 @@ contract NFT is ERC721Enumerable, Ownable {
     uint256 public maxSupply;
     uint256 public allowMintingOn;
     bool public pauseMinting;
+    mapping(address => bool) public whitelisted;
 
     event Mint(uint256 amount, address minter);
     event Withdraw(uint256 amount, address owner);
@@ -30,10 +32,15 @@ contract NFT is ERC721Enumerable, Ownable {
         allowMintingOn = _allowMintingOn;
         baseURI = _baseURI;
         pauseMinting = false;
+        whitelisted[msg.sender] = true;
     }
 
     function mint(uint256 _mintAmount) public payable {
-        require(!pauseMinting, 'minting is paused');
+        require(!pauseMinting, 'minting is paused by the owner');
+        require(
+            whitelisted[msg.sender] == true,
+            'have to be in the whitelist to mint'
+        );
         require(
             block.timestamp >= allowMintingOn,
             'trying to mint before specified minting time'
@@ -100,5 +107,9 @@ contract NFT is ERC721Enumerable, Ownable {
 
     function setCost(uint256 _newCost) public onlyOwner {
         cost = _newCost;
+    }
+
+    function addToWhitelist(address _whitelistAddress) public onlyOwner {
+        whitelisted[_whitelistAddress] = true;
     }
 }
