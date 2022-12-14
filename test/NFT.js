@@ -157,6 +157,28 @@ describe('NFT', () => {
           .reverted
       })
 
+      it('does not allow minting while minting is paused by the owner', async () => {
+        const ALLOW_MINTING_ON = Date.now().toString().slice(0, 10) // Now
+        const NFT = await ethers.getContractFactory('NFT')
+        nft = await NFT.deploy(
+          NAME,
+          SYMBOL,
+          COST,
+          MAX_SUPPLY,
+          ALLOW_MINTING_ON,
+          BASE_URI
+        )
+        let transaction = await nft.connect(deployer).toggleMinting()
+        await transaction.wait()
+
+        await expect(nft.connect(minter).mint(1, { value: COST })).to.be
+          .reverted
+      })
+
+      it('rejects non-whitelisted addresses', async () => {
+        await expect(nft.connect(user2).mint(1, { value: COST })).to.be.reverted
+      })
+
       it('require at least 1 NFT to be minted', async () => {
         await expect(nft.connect(minter).mint(0, { value: COST })).to.be
           .reverted
