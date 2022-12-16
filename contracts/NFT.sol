@@ -31,7 +31,6 @@ contract NFT is ERC721Enumerable, Ownable {
         maxSupply = _maxSupply;
         allowMintingOn = _allowMintingOn;
         baseURI = _baseURI;
-        pauseMinting = false;
         whitelisted[msg.sender] = true;
     }
 

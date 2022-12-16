@@ -30,6 +30,9 @@ function App() {
   const [cost, setCost] = useState(0)
   const [balance, setBalance] = useState(0)
 
+  const [pauseMinting, setPauseMinting] = useState(false)
+  const [whitelisted, setWhitelisted] = useState(false)
+
   const [isLoading, setIsLoading] = useState(true)
 
   const loadBlockchainData = async () => {
@@ -47,10 +50,6 @@ function App() {
     )
     setNFT(nft)
 
-    // console.log(nft.address === config[chainId].nft.address)
-    // console.log(await provider.getCode(nft.address))
-    // console.log(await nft.allowMintingOn())
-
     // Fetch accounts
     const accounts = await window.ethereum.request({
       method: 'eth_requestAccounts',
@@ -60,7 +59,6 @@ function App() {
 
     // Fetch Countdown
     const allowMintingOn = await nft.allowMintingOn()
-    // console.log({ allowMintingOn.toString() })
     setRevealTime(allowMintingOn.toString() + '000')
 
     // Fetch maxSupply
@@ -74,6 +72,10 @@ function App() {
 
     // Fetch account balance
     setBalance(await nft.balanceOf(account))
+
+    // Fetch if minting is turned on
+    setPauseMinting(await nft.pauseMinting())
+    setWhitelisted(await nft.whitelisted(account))
 
     setIsLoading(false)
   }
@@ -127,6 +129,8 @@ function App() {
                 nft={nft}
                 cost={cost}
                 setIsLoading={setIsLoading}
+                pauseMinting={pauseMinting}
+                whitelisted={whitelisted}
               />
             </Col>
           </Row>
