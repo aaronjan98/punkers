@@ -8,6 +8,9 @@ async function main() {
   accounts = await ethers.getSigners()
   deployer = accounts[0]
   minter = accounts[1]
+  user = accounts[2]
+
+  whitelistAddress = minter.address
 
   // Fetch network
   const { chainId } = await ethers.provider.getNetwork()
@@ -15,9 +18,9 @@ async function main() {
   // Fetch deployed token
   const nft = await ethers.getContractAt('NFT', config[chainId].nft.address)
 
-  await nft.addToWhitelist(minter.address)
+  await nft.addToWhitelist(whitelistAddress)
 
-  console.log('whitelisted status: ', await nft.whitelisted(minter.address))
+  console.log('whitelisted status: ', await nft.whitelisted(whitelistAddress))
 }
 
 main().catch(error => {

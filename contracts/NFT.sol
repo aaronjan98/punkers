@@ -56,7 +56,7 @@ contract NFT is ERC721Enumerable, Ownable {
 
         require(_mintAmount <= 3, 'Only three NFTs per user');
 
-        // Create a tokens
+        // Create tokens
         for (uint256 i = 1; i <= _mintAmount; i++) {
             _safeMint(msg.sender, supply + i);
         }
@@ -89,7 +89,7 @@ contract NFT is ERC721Enumerable, Ownable {
         return tokenIds;
     }
 
-    // Owner functions
+    /* Owner functions */
 
     function toggleMinting() public onlyOwner {
         pauseMinting = !pauseMinting;

@@ -32,6 +32,7 @@ function App() {
 
   const [pauseMinting, setPauseMinting] = useState(false)
   const [whitelisted, setWhitelisted] = useState(false)
+  const [wallet, setWallet] = useState(null)
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -70,6 +71,9 @@ function App() {
     // Fetch cost
     setCost(await nft.cost())
 
+    // Fetch account wallet
+    setWallet(await nft.walletOfOwner(account))
+
     // Fetch account balance
     setBalance(await nft.balanceOf(account))
 
@@ -101,7 +105,9 @@ function App() {
               {balance > 0 ? (
                 <div className="text-center">
                   <img
-                    src={`https://gateway.pinata.cloud/ipfs/QmQPEMsfd1tJnqYPbnTQCjoa8vczfsV1FmqZWgRdNQ7z3g/${balance.toString()}.png`}
+                    src={`https://gateway.pinata.cloud/ipfs/QmQPEMsfd1tJnqYPbnTQCjoa8vczfsV1FmqZWgRdNQ7z3g/${wallet[
+                      wallet.length - 1
+                    ].toString()}.png`}
                     alt="Open Punk"
                     width="400px"
                     height="400px"
