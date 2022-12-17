@@ -104,23 +104,25 @@ function App() {
           <Row>
             <Col>
               {balance > 0 ? (
-                <div className="text-center">
-                  <img
-                    src={`https://gateway.pinata.cloud/ipfs/QmQPEMsfd1tJnqYPbnTQCjoa8vczfsV1FmqZWgRdNQ7z3g/${wallet[
-                      wallet.length - 1
-                    ].toString()}.png`}
-                    alt="Open Punk"
-                    width="400px"
-                    height="400px"
-                  />
-                </div>
+                <Carousel className="text-center">
+                  {wallet.map((value, index) => (
+                    <Carousel.Item key={index} interval={1600}>
+                      <h3>NFT #{index + 1}</h3>
+                      <img
+                        className="d-block w-100"
+                        src={`https://gateway.pinata.cloud/ipfs/QmQPEMsfd1tJnqYPbnTQCjoa8vczfsV1FmqZWgRdNQ7z3g/${value.toString()}.png?text=First slide&bg=373940`}
+                        alt="First slide"
+                      />
+                    </Carousel.Item>
+                  ))}
+                </Carousel>
               ) : (
                 <img src={preview} alt="" />
               )}
             </Col>
 
             <Col>
-              <div className="my-4 text-center">
+              <div className="mb-4 mt-5 text-center">
                 <Countdown date={parseInt(revealTime)} className="h2" />
               </div>
 
@@ -140,25 +142,6 @@ function App() {
                 whitelisted={whitelisted}
               />
             </Col>
-          </Row>
-          <Row>
-            <Carousel>
-              {wallet.map((value, index) => (
-                <Carousel.Item key={index} interval={1000}>
-                  <img
-                    className="d-block w-100"
-                    src={`https://gateway.pinata.cloud/ipfs/QmQPEMsfd1tJnqYPbnTQCjoa8vczfsV1FmqZWgRdNQ7z3g/${value.toString()}.png?text=First slide&bg=373940`}
-                    alt="First slide"
-                  />
-                  <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>
-                      Nulla vitae elit libero, a pharetra augue mollis interdum.
-                    </p>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              ))}
-            </Carousel>
           </Row>
         </>
       )}
