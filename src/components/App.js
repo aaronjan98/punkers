@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Countdown from 'react-countdown'
+import Carousel from 'react-bootstrap/Carousel'
 import { ethers } from 'ethers'
 
 // IMG
@@ -71,7 +72,7 @@ function App() {
     // Fetch cost
     setCost(await nft.cost())
 
-    // Fetch account wallet
+    // Fetch all NFTs from account wallet
     setWallet(await nft.walletOfOwner(account))
 
     // Fetch account balance
@@ -139,6 +140,25 @@ function App() {
                 whitelisted={whitelisted}
               />
             </Col>
+          </Row>
+          <Row>
+            <Carousel>
+              {wallet.map((value, index) => (
+                <Carousel.Item key={index} interval={1000}>
+                  <img
+                    className="d-block w-100"
+                    src={`https://gateway.pinata.cloud/ipfs/QmQPEMsfd1tJnqYPbnTQCjoa8vczfsV1FmqZWgRdNQ7z3g/${value.toString()}.png?text=First slide&bg=373940`}
+                    alt="First slide"
+                  />
+                  <Carousel.Caption>
+                    <h3>First slide label</h3>
+                    <p>
+                      Nulla vitae elit libero, a pharetra augue mollis interdum.
+                    </p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))}
+            </Carousel>
           </Row>
         </>
       )}
