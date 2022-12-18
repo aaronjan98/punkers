@@ -10,7 +10,7 @@ async function main() {
   minter = accounts[1]
   user = accounts[2]
 
-  whitelistAddress = user.address
+  whitelistAddress = minter.address
 
   // Fetch network
   const { chainId } = await ethers.provider.getNetwork()
