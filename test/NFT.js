@@ -209,8 +209,10 @@ describe('NFT', () => {
       })
 
       it('puts a cap on the number of NFTs a user can mint', async () => {
-        await expect(nft.connect(minter).mint(4, { value: ether(40) })).to.be
+        await expect(nft.connect(minter).mint(5, { value: ether(50) })).to.be
           .reverted
+        await expect(nft.mint(4, { value: ether(40) })).to.be.fulfilled
+        await expect(nft.mint(1, { value: ether(10) })).to.be.reverted
       })
 
       it('does not return URIs for invalid tokens', async () => {
