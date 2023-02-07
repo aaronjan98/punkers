@@ -15,6 +15,7 @@
 
 - 🏠 [Homepage](https://github.com/aaronjan98/punkers)
 - ✨ [Demo](https://hjinm-jaaaa-aaaad-qe24a-cai.ic.fleek.co)
+- [NFT Contract on Goerli](https://goerli.etherscan.io/address/0xFaE42053Ffcb0fb6FbAF9680E6d7269BBB2A6943)
 
 ## Install
 
@@ -24,21 +25,35 @@ npm install
 
 ## Usage
 
+- Run web server
+
 ```sh
 npm run start
+```
+
+- Run local blockchain
+
+```sh
+npm run ganache
+```
+
+- Deploy NFT contract
+
+```sh
+npx hardhat run scripts/deploy.js --network ganache
 ```
 
 ## Run tests
 
 ```sh
-npm run test
+npx hardhat test
 ```
 
 ## Author
 
 👤 **aaronjanovitch@gmail.com**
 
-- Website: aaronjanovitch.com
+- Website: [aaronjanovitch.com](https://aaronjanovitch.com)
 - Twitter: [@AJanovitch](https://twitter.com/AJanovitch)
 - Github: [@aaronjan98](https://github.com/aaronjan98)
 - LinkedIn: [@aaron-janovitch](https://linkedin.com/in/aaron-janovitch)
