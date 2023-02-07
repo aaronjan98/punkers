@@ -8,8 +8,8 @@ const tokens = n => {
 const ether = tokens
 
 describe('NFT', () => {
-  const NAME = 'Dapp Punks'
-  const SYMBOL = 'DP'
+  const NAME = 'Punkers'
+  const SYMBOL = 'PK'
   const COST = ether(10)
   const MAX_SUPPLY = 25
   const BASE_URI = 'ipfs://QmQ2jnDYecFhrf3asEWjyjZRX1pZSsNWG3qHzmNDvXa9qg/'

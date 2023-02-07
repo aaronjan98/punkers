@@ -11,7 +11,7 @@ module.exports = {
       url: 'http://127.0.0.1:8545',
     },
     ganache: {
-      url: 'http://127.0.0.1:9000',
+      url: 'http://127.0.0.1:3334',
     },
     goerli: {
       url: `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,

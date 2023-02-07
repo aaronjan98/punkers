@@ -1,7 +1,7 @@
 {
-  "name": "dapp_punks",
+  "name": "punkers",
   "version": "1.0.0",
-  "description": "",
+  "description": "NFT collection of 25 unique punkers",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ganache": "ganache -p 9000 -a 20 -e 10000 -m 'egg cannon figure ketchup fall issue never share online shiver chief album' -t 2023-01-01T12:00:00Z"
+    "ganache": "ganache --chain.chainId 31339 -p 3334 -a 20 -e 10000 -m 'web excess blood script melody grape vast economy believe garbage mango inner'"
   },
   "author": "aaronjanovitch@gmail.com",
   "license": "ISC",
