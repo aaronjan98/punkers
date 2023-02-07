@@ -11,9 +11,10 @@
 
 > NFT collection of 25 unique punkers
 
-### 🏠 [Homepage](https://github.com/aaronjan98/punkers)
+## Links
 
-### ✨ [Demo](https://placeholder.com)
+- 🏠 [Homepage](https://github.com/aaronjan98/punkers)
+- ✨ [Demo](https://hjinm-jaaaa-aaaad-qe24a-cai.ic.fleek.co)
 
 ## Install
 
