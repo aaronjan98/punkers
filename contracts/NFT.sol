@@ -3,7 +3,6 @@ pragma solidity ^0.8.0;
 
 import './ERC721Enumerable.sol';
 import './Ownable.sol';
-import 'hardhat/console.sol';
 
 contract NFT is ERC721Enumerable, Ownable {
     using Strings for uint256;

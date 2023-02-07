@@ -32,7 +32,6 @@ function App() {
   const [balance, setBalance] = useState(0)
 
   const [pauseMinting, setPauseMinting] = useState(false)
-  const [whitelisted, setWhitelisted] = useState(false)
   const [wallet, setWallet] = useState(null)
 
   const [isLoading, setIsLoading] = useState(true)
@@ -80,7 +79,6 @@ function App() {
 
     // Fetch if minting is turned on
     setPauseMinting(await nft.pauseMinting())
-    setWhitelisted(await nft.whitelisted(account))
 
     setIsLoading(false)
   }
@@ -139,7 +137,6 @@ function App() {
                 cost={cost}
                 setIsLoading={setIsLoading}
                 pauseMinting={pauseMinting}
-                whitelisted={whitelisted}
               />
             </Col>
           </Row>
