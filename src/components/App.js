@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Card, Row, Col } from 'react-bootstrap'
 import Countdown from 'react-countdown'
 import Carousel from 'react-bootstrap/Carousel'
 import { ethers } from 'ethers'
@@ -96,7 +96,14 @@ function App() {
       <h1 className="my-4 text-center">Punkers</h1>
 
       {isLoading ? (
-        <Loading />
+        <Card style={{ width: '450px' }} className="mx-auto px-4">
+          <p
+            className="d-flex justify-content-center align-items-center"
+            style={{ height: '300px' }}
+          >
+            Please connect MetaMask wallet.
+          </p>
+        </Card>
       ) : (
         <>
           <Row>
