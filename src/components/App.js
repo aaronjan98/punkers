@@ -166,6 +166,7 @@ function App() {
                 cost={cost}
                 setIsLoading={setIsLoading}
                 pauseMinting={pauseMinting}
+                date={parseInt(revealTime)}
               />
             </Col>
           </Row>

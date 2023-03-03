@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 
-const Mint = ({ provider, nft, cost, setIsLoading, pauseMinting }) => {
+const Mint = ({ provider, nft, cost, setIsLoading, pauseMinting, date }) => {
   const [isWaiting, setIsWaiting] = useState(false)
   const [mintAmount, setMintAmount] = useState(1)
 
@@ -38,8 +38,7 @@ const Mint = ({ provider, nft, cost, setIsLoading, pauseMinting }) => {
         />
       ) : (
         <Form.Group>
-          {/*check that owner didn't pause minting*/}
-          {pauseMinting ? (
+          {!pauseMinting && Date.now() > date ? (
             <>
               <Form.Label>Mint Amount</Form.Label>
               <Form.Control

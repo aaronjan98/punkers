@@ -11,7 +11,7 @@ async function main() {
   const SYMBOL = 'PK'
   const COST = ethers.utils.parseEther('10')
   const MAX_SUPPLY = 25
-  // const NFT_MINT_DATE = (Date.now() + 120000).toString().slice(0, 10)
+  /* const NFT_MINT_DATE = (Date.now() + 60000).toString().slice(0, 10) */
   const NFT_MINT_DATE = '1675929600' // Feb 9th 2023
   const IPFS_METADATA_URI =
     'ipfs://QmQ2jnDYecFhrf3asEWjyjZRX1pZSsNWG3qHzmNDvXa9qg/'
