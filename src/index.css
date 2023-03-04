@@ -23,12 +23,20 @@ code {
   min-width: 400px;
 }
 
+svg.mx-3 {
+  margin-left: 0rem !important;
+}
+
+canvas.mx-2 {
+  margin-right: 0rem !important;
+}
+
 div .col.carousel-col {
-  display: "flex" !important;
-  justify-content: "center" !important;
   padding-right: 10% !important;
 }
 
-svg.mx-3 {
-  margin-left: 0rem !important;
+@media (max-width: 767px) {
+  div .col.carousel-col {
+    padding-right: 0 !important;
+  }
 }
