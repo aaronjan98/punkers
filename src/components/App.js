@@ -129,9 +129,9 @@ function App() {
       ) : (
         <>
           <Row>
-            <Col>
+            <Col style={{ display: 'flex', justifyContent: 'center' }}>
               {balance > 0 ? (
-                <Carousel className="text-center">
+                <Carousel className="text-center" style={{ maxWidth: '400px' }}>
                   {wallet.map((value, index) => (
                     <Carousel.Item key={index} interval={1600}>
                       <h3>NFT #{index + 1}</h3>
