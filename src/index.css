@@ -32,7 +32,9 @@ canvas.mx-2 {
 }
 
 div .col.carousel-col {
-  padding-right: 10% !important;
+  padding-right: 5% !important;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 767px) {
